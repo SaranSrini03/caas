@@ -240,7 +240,7 @@
       body {
         padding: 12px;
       }
-      
+
       .card {
         max-width: 100%;
         margin: 0 auto;
@@ -378,6 +378,7 @@
         opacity: 0;
         transform: translateY(30px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -392,12 +393,29 @@
       animation: fadeInUp 0.6s ease-out;
     }
 
-    .contact-item:nth-child(1) { animation-delay: 0.1s; }
-    .contact-item:nth-child(2) { animation-delay: 0.2s; }
-    .contact-item:nth-child(3) { animation-delay: 0.3s; }
-    .contact-item:nth-child(4) { animation-delay: 0.4s; }
-    .contact-item:nth-child(5) { animation-delay: 0.5s; }
-    .contact-item:nth-child(6) { animation-delay: 0.6s; }
+    .contact-item:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .contact-item:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .contact-item:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .contact-item:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    .contact-item:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+
+    .contact-item:nth-child(6) {
+      animation-delay: 0.6s;
+    }
   </style>
 </head>
 
@@ -414,75 +432,88 @@
 
     <!-- Contact Info -->
     <div class="contact-section">
-      <div class="contact-item">
-        <div class="icon-container">
-          <i class="fab fa-whatsapp contact-icon"></i>
+      <a href="https://wa.me/919611191855" target="_blank" style="text-decoration: none;">
+        <div class="contact-item" style="cursor: pointer;">
+          <div class="icon-container">
+            <i class="fab fa-whatsapp contact-icon"></i>
+          </div>
+          <div class="contact-details">
+            <div class="contact-value">+91 96111 91855</div>
+            <div class="contact-label">WhatsApp</div>
+          </div>
         </div>
-        <div class="contact-details">
-          <a href="https://wa.me/919611191855" target="_blank" class="contact-link contact-value">
-            +91 96111 91855
-          </a>
-          <div class="contact-label">WhatsApp</div>
-        </div>
-      </div>
+      </a>
 
-      <div class="contact-item">
-        <div class="icon-container">
-          <i class="fas fa-phone-alt contact-icon"></i>
+      <a href="tel:+919611191855" style="text-decoration: none;">
+        <div class="contact-item" style="cursor: pointer;">
+          <div class="icon-container">
+            <i class="fas fa-phone-alt contact-icon"></i>
+          </div>
+          <div class="contact-details">
+            <div class="contact-value">+91 96111 91855</div>
+            <div class="contact-label">Office</div>
+          </div>
         </div>
-        <div class="contact-details">
-          <a href="tel:+919611191855" class="contact-link contact-value">
-            +91 96111 91855
-          </a>
-          <div class="contact-label">Office</div>
-        </div>
-      </div>
+      </a>
 
-      <div class="contact-item">
-        <div class="icon-container">
-          <i class="fas fa-envelope contact-icon"></i>
-        </div>
-        <div class="contact-details">
-          <a href="mailto:ceo@caasindia.com" class="contact-link contact-value">ceo@caasindia.com</a>
-          <div class="contact-label">Email</div>
-        </div>
-      </div>
 
-      <div class="contact-item">
-        <div class="icon-container">
-          <i class="fas fa-globe contact-icon"></i>
+      <a href="mailto:ceo@caasindia.com" style="text-decoration: none;">
+        <div class="contact-item" style="cursor: pointer;">
+          <div class="icon-container">
+            <i class="fas fa-envelope contact-icon"></i>
+          </div>
+          <div class="contact-details">
+            <div class="contact-value">ceo@caasindia.com</div>
+            <div class="contact-label">Email</div>
+          </div>
         </div>
-        <div class="contact-details">
-          <a href="https://caasindia.com/" target="_blank" class="contact-link contact-value">caasindia.com</a>
-          <div class="contact-label">Website</div>
-        </div>
-      </div>
+      </a>
 
-      <div class="contact-item">
-        <div class="icon-container">
-          <i class="fab fa-facebook-f contact-icon"></i>
-        </div>
-        <div class="contact-details">
-          <a href="https://www.facebook.com/profile.php/?id=100054568864060&name=xhp_nt__fb__action__open_user&_rdr"
-            target="_blank" class="contact-link contact-value">Facebook Page</a>
-          <div class="contact-label">Social Media</div>
-        </div>
-      </div>
 
-      <div class="contact-item">
-        <div class="icon-container">
-          <i class="fas fa-map-marker-alt contact-icon"></i>
-        </div>
-        <div class="contact-details">
-          <a href="https://www.google.com/maps?q=Sy+No+20/3,+Anumepalli,+Begapalli+Road,+Zuzuwadi,+Hosur,+Tamilnadu,+India+-+635126"
-            target="_blank" class="contact-link contact-value address-text">
-            Sy No 20/3, Anumepalli, Begapalli Road, Zuzuwadi<br />
-            Hosur, Tamilnadu<br />
-            India - 635126
-          </a>
-          <div class="contact-label">Headquarters</div>
-        </div>
+<a href="https://caasindia.com/" target="_blank" style="text-decoration: none;">
+  <div class="contact-item" style="cursor: pointer;">
+    <div class="icon-container">
+      <i class="fas fa-globe contact-icon"></i>
+    </div>
+    <div class="contact-details">
+      <div class="contact-value">caasindia.com</div>
+      <div class="contact-label">Website</div>
+    </div>
+  </div>
+</a>
+
+
+<a href="https://www.facebook.com/profile.php/?id=100054568864060&name=xhp_nt__fb__action__open_user&_rdr" target="_blank" style="text-decoration: none;">
+  <div class="contact-item" style="cursor: pointer;">
+    <div class="icon-container">
+      <i class="fab fa-facebook-f contact-icon"></i>
+    </div>
+    <div class="contact-details">
+      <div class="contact-value">Facebook Page</div>
+      <div class="contact-label">Social Media</div>
+    </div>
+  </div>
+</a>
+
+
+<a href="https://www.google.com/maps?q=Sy+No+20/3,+Anumepalli,+Begapalli+Road,+Zuzuwadi,+Hosur,+Tamilnadu,+India+-+635126" 
+   target="_blank" 
+   style="text-decoration: none;">
+  <div class="contact-item" style="cursor: pointer;">
+    <div class="icon-container">
+      <i class="fas fa-map-marker-alt contact-icon"></i>
+    </div>
+    <div class="contact-details">
+      <div class="contact-value address-text">
+        Sy No 20/3, Anumepalli, Begapalli Road, Zuzuwadi<br />
+        Hosur, Tamilnadu<br />
+        India - 635126
       </div>
+      <div class="contact-label">Headquarters</div>
+    </div>
+  </div>
+</a>
+
     </div>
   </div>
 </body>
