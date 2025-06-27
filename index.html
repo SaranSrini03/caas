@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAAS Contact Card</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+      color: #1e293b;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 440px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 35px 70px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.2);
+    }
+
+    .banner {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e40af 100%);
+      padding: 40px 24px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="white" opacity="0.1"/><circle cx="80" cy="40" r="0.5" fill="white" opacity="0.1"/><circle cx="40" cy="80" r="1.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .banner .logo {
+      width: 100px;
+      height: 100px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 32px;
+      font-weight: 900;
+      color: #2563eb;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 0 3px rgba(255, 255, 255, 0.1);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s ease;
+    }
+
+    .banner .logo:hover {
+      transform: rotate(5deg) scale(1.05);
+    }
+
+    .company-name {
+      font-size: 26px;
+      font-weight: 800;
+      text-align: center;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .company-tagline {
+      font-size: 15px;
+      text-align: center;
+      opacity: 0.9;
+      margin-top: 8px;
+      font-weight: 400;
+      position: relative;
+      z-index: 1;
+      letter-spacing: 0.01em;
+    }
+
+    .contact-section {
+      padding: 32px 24px;
+      background: white;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+      transition: all 0.3s ease;
+      border-radius: 12px;
+      margin: 0 -8px;
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+
+    .contact-item:hover {
+      background: rgba(59, 130, 246, 0.04);
+      transform: translateX(4px);
+    }
+
+    .contact-item:last-child {
+      border-bottom: none;
+    }
+
+    .icon-container {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      border-radius: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 16px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .icon-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .contact-item:hover .icon-container::before {
+      opacity: 1;
+    }
+
+    .contact-icon {
+      font-size: 20px;
+      color: #2563eb;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s ease;
+    }
+
+    .contact-item:hover .contact-icon {
+      transform: scale(1.1);
+    }
+
+    .contact-details {
+      flex: 1;
+    }
+
+    .contact-value {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1e293b;
+      line-height: 1.4;
+      transition: color 0.3s ease;
+    }
+
+    .contact-label {
+      font-size: 13px;
+      color: #64748b;
+      margin-top: 2px;
+      font-weight: 500;
+    }
+
+    .contact-link {
+      color: #2563eb;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .contact-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #2563eb, #1d4ed8);
+      transition: width 0.3s ease;
+    }
+
+    .contact-link:hover::after {
+      width: 100%;
+    }
+
+    .contact-link:hover {
+      color: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    .address-text {
+      line-height: 1.5;
+    }
+
+    .logo-img {
+      width: 75%;
+      height: 75%;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .banner .logo:hover .logo-img {
+      transform: scale(1.1);
+    }
+
+    /* Enhanced Mobile Responsiveness */
+    @media (max-width: 768px) {
+      body {
+        padding: 12px;
+      }
+      
+      .card {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+
+      .banner {
+        padding: 32px 20px 24px;
+      }
+
+      .banner .logo {
+        width: 85px;
+        height: 85px;
+        font-size: 28px;
+      }
+
+      .company-name {
+        font-size: 22px;
+      }
+
+      .company-tagline {
+        font-size: 14px;
+      }
+
+      .contact-section {
+        padding: 24px 20px;
+      }
+
+      .contact-item {
+        padding: 14px 0;
+        margin: 0 -4px;
+        padding-left: 4px;
+        padding-right: 4px;
+      }
+
+      .icon-container {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        margin-right: 14px;
+      }
+
+      .contact-icon {
+        font-size: 19px;
+      }
+
+      .contact-value {
+        font-size: 15px;
+      }
+
+      .contact-label {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        border-radius: 20px;
+      }
+
+      .banner {
+        padding: 28px 16px 20px;
+      }
+
+      .banner .logo {
+        width: 80px;
+        height: 80px;
+        font-size: 26px;
+      }
+
+      .company-name {
+        font-size: 20px;
+      }
+
+      .company-tagline {
+        font-size: 13px;
+      }
+
+      .contact-section {
+        padding: 20px 16px;
+      }
+
+      .contact-item {
+        padding: 12px 0;
+      }
+
+      .icon-container {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        margin-right: 12px;
+      }
+
+      .contact-icon {
+        font-size: 18px;
+      }
+
+      .contact-value {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .banner .logo {
+        width: 75px;
+        height: 75px;
+        font-size: 24px;
+      }
+
+      .company-name {
+        font-size: 18px;
+      }
+
+      .contact-section {
+        padding: 18px 14px;
+      }
+
+      .icon-container {
+        width: 42px;
+        height: 42px;
+        margin-right: 10px;
+      }
+
+      .contact-icon {
+        font-size: 17px;
+      }
+
+      .contact-value {
+        font-size: 13px;
+      }
+    }
+
+    /* Animation for page load */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .contact-item {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .contact-item:nth-child(1) { animation-delay: 0.1s; }
+    .contact-item:nth-child(2) { animation-delay: 0.2s; }
+    .contact-item:nth-child(3) { animation-delay: 0.3s; }
+    .contact-item:nth-child(4) { animation-delay: 0.4s; }
+    .contact-item:nth-child(5) { animation-delay: 0.5s; }
+    .contact-item:nth-child(6) { animation-delay: 0.6s; }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <!-- Banner Header -->
+    <div class="banner">
+      <div class="logo">
+        <img src="logo.png" alt="CAAS Logo" class="logo-img" />
+      </div>
+      <div class="company-name">Control and Automation Systems</div>
+      <div class="company-tagline">Innovative Solutions for Modern Industries</div>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="contact-section">
+      <div class="contact-item">
+        <div class="icon-container">
+          <i class="fab fa-whatsapp contact-icon"></i>
+        </div>
+        <div class="contact-details">
+          <a href="https://wa.me/919611191855" target="_blank" class="contact-link contact-value">
+            +91 96111 91855
+          </a>
+          <div class="contact-label">WhatsApp</div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="icon-container">
+          <i class="fas fa-phone-alt contact-icon"></i>
+        </div>
+        <div class="contact-details">
+          <a href="tel:+919611191855" class="contact-link contact-value">
+            +91 96111 91855
+          </a>
+          <div class="contact-label">Office</div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="icon-container">
+          <i class="fas fa-envelope contact-icon"></i>
+        </div>
+        <div class="contact-details">
+          <a href="mailto:ceo@caasindia.com" class="contact-link contact-value">ceo@caasindia.com</a>
+          <div class="contact-label">Email</div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="icon-container">
+          <i class="fas fa-globe contact-icon"></i>
+        </div>
+        <div class="contact-details">
+          <a href="https://caasindia.com/" target="_blank" class="contact-link contact-value">caasindia.com</a>
+          <div class="contact-label">Website</div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="icon-container">
+          <i class="fab fa-facebook-f contact-icon"></i>
+        </div>
+        <div class="contact-details">
+          <a href="https://www.facebook.com/profile.php/?id=100054568864060&name=xhp_nt__fb__action__open_user&_rdr"
+            target="_blank" class="contact-link contact-value">Facebook Page</a>
+          <div class="contact-label">Social Media</div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="icon-container">
+          <i class="fas fa-map-marker-alt contact-icon"></i>
+        </div>
+        <div class="contact-details">
+          <a href="https://www.google.com/maps?q=Sy+No+20/3,+Anumepalli,+Begapalli+Road,+Zuzuwadi,+Hosur,+Tamilnadu,+India+-+635126"
+            target="_blank" class="contact-link contact-value address-text">
+            Sy No 20/3, Anumepalli, Begapalli Road, Zuzuwadi<br />
+            Hosur, Tamilnadu<br />
+            India - 635126
+          </a>
+          <div class="contact-label">Headquarters</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
